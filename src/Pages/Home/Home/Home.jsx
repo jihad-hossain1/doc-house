@@ -2,13 +2,11 @@ import React, { useState } from "react";
 // import docImage from "../../../assets/banner/doctor.png";
 import docImages from "../../../assets/doctor.png";
 import MyTabs from "../../../Components/Tabs/Tabs";
+import Opening from "../../../Components/Opening/Opening";
 
 // react tabs
 
-
 const Home = () => {
-
-
   return (
     <>
       <div className="mt-24 grid grid-cols-1 md:grid-cols-3 md:space-x-10">
@@ -23,10 +21,13 @@ const Home = () => {
             quae ab illo inve ntore veritatis et quasi architecto beatae vitae
             dicta sunt explicabo.
           </p>
-         
-            <MyTabs></MyTabs>
-          
+
+          <MyTabs></MyTabs>
         </div>
+      </div>
+      {/* opening section  */}
+      <div className="mt-20">
+        <Opening></Opening>
       </div>
     </>
   );
