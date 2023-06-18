@@ -6,7 +6,6 @@ const img_hosting_token = import.meta.env.VITE_BB_KEY;
 
 const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`;
 const AddItem = () => {
-
   const {
     register,
     handleSubmit,
@@ -27,24 +26,35 @@ const AddItem = () => {
         console.log(dataResponse);
         if (dataResponse.success) {
           const imgUrl = dataResponse.data.display_url;
-          console.log('photo uploaded url',imgUrl);
+          console.log("photo uploaded url", imgUrl);
           // console.log(imgUrl);
-          const { name, email, category, description,price, } = data;
-          const newItem = { name, email, image: imgUrl, category, description, price: parseFloat(price) };
+          const { name, email, category, description, price } = data;
+          const newItem = {
+            name,
+            email,
+            image: imgUrl,
+            category,
+            description,
+            price: parseFloat(price),
+          };
           // console.log(newItem);
-          axios.post(`${import.meta.env.VITE_BASE_URL}/addADoctor`, {newItem}).then((data) => {
-            if (data.data.insertedId) {
-              Swal.fire({
-               position: "top-end",
-               icon: "success",
-               title: "Your work has been saved",
-               showConfirmButton: false,
-               timer: 1500,
-             });
-            } console.log(data);
-          }).catch(error => {
-            console.log(error)
-          })
+          axios
+            .post(`${import.meta.env.VITE_BASE_URL}/addADoctor`, newItem)
+            .then((data) => {
+              if (data.data.insertedId) {
+                Swal.fire({
+                  position: "top-end",
+                  icon: "success",
+                  title: "Your work has been saved",
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
+              }
+              console.log(data);
+            })
+            .catch((error) => {
+              console.log(error);
+            });
         }
       });
   };

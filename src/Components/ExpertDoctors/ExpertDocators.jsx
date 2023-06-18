@@ -1,20 +1,18 @@
 import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
-import { getAllDcotors } from "../../auth/doctor";
+
+import useDoctors from "../../hook/useDoctors";
+import DoctorCard from "./DoctorCard";
 
 const ExpertDocators = () => {
-  const [getExpertDoctors, setExpertDoctors] = useState([]);
-
-  useEffect(() => {
-    getAllDcotors()
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setExpertDoctors(data);
-      });
-  }, []);
-  return <div>{getExpertDoctors.length}</div>;
+  const [doctors] = useDoctors();
+  console.log(doctors);
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 lg:gap-5">
+      {doctors.slice(0, 3).map((doctor) => (
+        <DoctorCard key={doctor._id} doctor={doctor}></DoctorCard>
+      ))}
+    </div>
+  );
 };
 
 export default ExpertDocators;
