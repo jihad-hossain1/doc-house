@@ -2,7 +2,7 @@ import React from "react";
 import bannerPng from "../../assets/banner/banner.png";
 const Banner = () => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 text-white ">
+    <div className="grid grid-cols-1 md:grid-cols-2 text-white  bg-[#07332F] w-full">
       <div className="space-y-6 text-center md:text-start p-4 ">
         <h2 className="text-5xl">
           Your Best Medical <br className="hidden lg:block" />

@@ -1,17 +1,17 @@
 // import { Footer } from "flowbite-react";
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
-import Banner from "../../../Components/Banner/Banner";
+// import Banner from "../../../Components/Banner/Banner";
 import Container from "../../../Components/Share/Container/Container";
 import { AiOutlineUser } from "react-icons/ai";
 import { useState } from "react";
 import { useCallback } from "react";
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
   const toggleOpen = useCallback(() => {
-    setIsOpen(value => !value)
-  },[])
+    setIsOpen((value) => !value);
+  }, []);
   return (
     <Container>
       <div class="navbar  bg-transparent text-white">
@@ -69,7 +69,7 @@ const Navbar = () => {
             <li>
               <Link>Appointment</Link>
             </li>
-            
+
             <li onClick={toggleOpen}>
               <span>
                 <AiOutlineUser className="text-xl"></AiOutlineUser>
@@ -91,7 +91,6 @@ const Navbar = () => {
           </ul>
         </div>
       </div>
-      <Banner></Banner>
     </Container>
   );
 };

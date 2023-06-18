@@ -12,7 +12,7 @@ const Opening = () => {
           <p>Open 9.00 am to 5.00pm Everyday</p>
         </div>
       </div>
-      <div className="h-[200px] p-5 text-white bg-[#F7A582] flex space-x-3 rounded-lg shadow hover:shadow-md mx-3 w-full items-center justify-center">
+      <div className="h-[200px] p-5 text-white bg-[#F7A582] flex space-x-3 rounded-lg shadow hover:shadow-md m-4 w-full items-center justify-center ">
         <div>
           <FaLocationArrow className="font-extralight text-5xl"></FaLocationArrow>
         </div>
@@ -21,7 +21,7 @@ const Opening = () => {
           <p>abc road, abc, 1200 xyz country</p>
         </div>
       </div>
-      <div className="h-[200px] p-5 text-white bg-[#07332F] flex space-x-3 rounded-lg shadow hover:shadow-md mx-3 w-full items-center justify-center">
+      <div className="h-[200px] p-5 text-white bg-[#07332F] flex space-x-3 rounded-lg shadow hover:shadow-md m-4 w-full items-center justify-center">
         <div>
           <FaPhoneAlt className="font-extralight text-5xl"></FaPhoneAlt>
         </div>
