@@ -16,7 +16,9 @@ const Main = () => {
         </div>
       </Container>
       <Container>
-        <Outlet></Outlet>
+        <div className="min-h-screen">
+          <Outlet></Outlet>
+        </div>
       </Container>
       <Footer></Footer>
     </>
