@@ -6,6 +6,7 @@ import Opening from "../../../Components/Opening/Opening";
 import Banner from "../../../Components/Banner/Banner";
 import Review from "../../../Components/ReviewSlider/Review";
 import ExpertDocators from "../../../Components/ExpertDoctors/ExpertDocators";
+import ContactUs from "../../../Components/ContactUs/ContactUs";
 
 // react tabs
 
@@ -47,8 +48,9 @@ const Home = () => {
         </div>
         <Review></Review>
       </div>
+
       {/* Our Expert Doctors  */}
-      <div className="mt-16">
+      <div className="my-32 ">
         <div className="text-center space-y-3 mb-10">
           <h4 className="text-4xl font-bold">Our Expert Doctors</h4>
           <p>
@@ -57,10 +59,14 @@ const Home = () => {
             aperiam culpa tempore dolor!
           </p>
         </div>
+
         <div>
           <ExpertDocators></ExpertDocators>
         </div>
       </div>
+
+      {/* contact with us section  */}
+      <ContactUs></ContactUs>
     </>
   );
 };
