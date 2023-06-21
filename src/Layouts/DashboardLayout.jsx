@@ -1,0 +1,78 @@
+import React from "react";
+import { Button, Drawer, Radio, Space } from "antd";
+import { useState } from "react";
+import { FaIndent, FaLine } from "react-icons/fa";
+import { Link, Outlet } from "react-router-dom";
+
+const DashboardLayout = () => {
+  const [open, setOpen] = useState(false);
+  const [placement, setPlacement] = useState("left");
+  const showDrawer = () => {
+    setOpen(true);
+  };
+  const onClose = () => {
+    setOpen(false);
+  };
+
+  return (
+    <>
+      <div>
+        <Space className="lg:hidden">
+          <div className="mt-4 ml-2">
+            <Button type="secondary" onClick={showDrawer}>
+              <FaIndent className="text-2xl hover:text-3xl "></FaIndent>
+            </Button>
+          </div>
+        </Space>
+        <Drawer
+          title="Basic Drawer"
+          placement={placement}
+          closable={false}
+          onClose={onClose}
+          open={open}
+          key={placement}
+        >
+          <ul className="space-y-6 text-xl">
+            <li>
+              <Link to={`/`}>All Users</Link>
+            </li>
+            <li>
+              <Link to={`addItem`}>Add Doctor</Link>
+            </li>
+            <li>
+              <Link to={`/`}>Mange Doctors</Link>
+            </li>
+            <li>
+              <Link to={`/`}>Home</Link>
+            </li>
+          </ul>
+        </Drawer>
+      </div>
+      <div className="hidden lg:block">
+        <div className="grid grid-cols-6 gap-2">
+          <div className=" min-h-screen border-0 border-r-2 px-5 pt-4">
+            <ul className="space-y-6 text-xl">
+              <li>
+                <Link to={`/`}>All Users</Link>
+              </li>
+              <li>
+                <Link to={`addItem`}>Add Doctor</Link>
+              </li>
+              <li>
+                <Link to={`/`}>Mange Doctors</Link>
+              </li>
+              <li>
+                <Link to={`/`}>Home</Link>
+              </li>
+            </ul>
+          </div>
+          <div className="col-span-4  w-full min-h-screen">
+            <Outlet></Outlet>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default DashboardLayout;

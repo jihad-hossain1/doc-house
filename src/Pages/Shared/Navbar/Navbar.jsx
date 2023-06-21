@@ -59,7 +59,7 @@ const Navbar = () => {
               </li>
               {user && (
                 <li>
-                  <Link to={`/dashboard`}>Dashoard</Link>
+                  <Link to={`/dashboardLayout`}>Dashoard</Link>
                 </li>
               )}
               {user ? (
@@ -100,7 +100,7 @@ const Navbar = () => {
                   {user ? (
                     <>
                       <li className="hover:font-semibold">
-                        <Link to={`/dashboard`}>Dashboard</Link>
+                        <Link to={`/dashboardLayout`}>Dashboard</Link>
                       </li>
                       <li onClick={handleLogOut}>
                         <Link>LogOut</Link>
