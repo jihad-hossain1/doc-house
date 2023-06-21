@@ -6,12 +6,22 @@ import Container from "../../../Components/Share/Container/Container";
 import { AiOutlineUser } from "react-icons/ai";
 import { useState } from "react";
 import { useCallback } from "react";
+import { useContext } from "react";
+import { AuthContext } from "../../../provider/AuthProvider";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+
   const [isOpen, setIsOpen] = useState(false);
   const toggleOpen = useCallback(() => {
     setIsOpen((value) => !value);
   }, []);
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => console.log(error));
+  };
+
   return (
     <Container>
       <div class="navbar  bg-transparent text-white">
@@ -47,12 +57,20 @@ const Navbar = () => {
               <li>
                 <Link>Appointment</Link>
               </li>
-              <li>
-                <Link to={`/dashboard`}>Dashoard</Link>
-              </li>
-              <li>
-                <Link to={`/login`}>Login</Link>
-              </li>
+              {user && (
+                <li>
+                  <Link to={`/dashboard`}>Dashoard</Link>
+                </li>
+              )}
+              {user ? (
+                <li onClick={handleLogOut}>
+                  <Link>LogOut</Link>
+                </li>
+              ) : (
+                <li>
+                  <Link to={`/login`}>Login</Link>
+                </li>
+              )}
             </ul>
           </div>
           <Link class="btn btn-ghost normal-case text-xl"></Link>
@@ -77,14 +95,22 @@ const Navbar = () => {
               {isOpen && (
                 <ul className="bg-white text-green-950">
                   <li className="hover:font-semibold">
-                    <Link to={`/dashboard`}>Dashboard</Link>
-                  </li>
-                  <li className="hover:font-semibold">
                     <Link to={`/`}>Favorite</Link>
                   </li>
-                  <li className="hover:font-semibold">
-                    <Link to={`/login`}>Login</Link>
-                  </li>
+                  {user ? (
+                    <>
+                      <li className="hover:font-semibold">
+                        <Link to={`/dashboard`}>Dashboard</Link>
+                      </li>
+                      <li onClick={handleLogOut}>
+                        <Link>LogOut</Link>
+                      </li>
+                    </>
+                  ) : (
+                    <li className="hover:font-semibold">
+                      <Link to={`/login`}>Login</Link>
+                    </li>
+                  )}
                 </ul>
               )}
             </li>

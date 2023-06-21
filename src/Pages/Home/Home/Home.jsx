@@ -13,7 +13,6 @@ import ContactUs from "../../../Components/ContactUs/ContactUs";
 const Home = () => {
   return (
     <>
-      <Banner></Banner>
       <div className="mt-24 grid grid-cols-1 md:grid-cols-3 md:space-x-10">
         <div className="border p-1 rounded-lg hover:shadow-md shadow">
           <img className="w-full" src={docImages} alt="" />

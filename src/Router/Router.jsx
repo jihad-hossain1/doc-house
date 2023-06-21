@@ -8,6 +8,7 @@ import AddItem from "../Pages/Dashboard/AddItem/AddItem";
 import Doctors from "../Pages/Doctors/Doctors";
 import DoctorDetails from "../Pages/Doctors/DoctorDetails";
 import { getDoctor } from "../auth/doctor";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -31,7 +32,11 @@ const router = createBrowserRouter([
   },
   {
     path: "dashboard",
-    element: <Dashbord></Dashbord>,
+    element: (
+      <PrivateRoute>
+        <Dashbord></Dashbord>
+      </PrivateRoute>
+    ),
     children: [
       {
         path: "addItem",

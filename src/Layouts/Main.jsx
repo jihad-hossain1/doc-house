@@ -3,6 +3,7 @@ import Navbar from "../Pages/Shared/Navbar/Navbar";
 import { Outlet, useLocation } from "react-router-dom";
 import Footer from "../Pages/Shared/Footer/Footer";
 import Container from "../Components/Share/Container/Container";
+import Banner from "../Components/Banner/Banner";
 
 const Main = () => {
   const location = useLocation();
@@ -10,11 +11,13 @@ const Main = () => {
   const noHeader = location.pathname.includes(``);
   return (
     <>
-      <Container>
-        <div className="py-1  bg-[#07332F]">
-          <Navbar></Navbar>
-        </div>
-      </Container>
+      <div className="py-1  bg-[#07332F]">
+        <Navbar></Navbar>
+      </div>
+
+      <div className="bg-[#07332F] ">
+        <Banner></Banner>
+      </div>
       <Container>
         <div className="min-h-screen">
           <Outlet></Outlet>
