@@ -3,8 +3,11 @@ import { Button, Drawer, Radio, Space } from "antd";
 import { useState } from "react";
 import { FaIndent, FaLine } from "react-icons/fa";
 import { Link, Outlet } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../provider/AuthProvider";
 
 const DashboardLayout = () => {
+  const { user } = useContext(AuthContext);
   const [open, setOpen] = useState(false);
   const [placement, setPlacement] = useState("left");
   const showDrawer = () => {
@@ -25,41 +28,43 @@ const DashboardLayout = () => {
           </div>
         </Space>
         <Drawer
-          title="Basic Drawer"
+          title={user?.displayName}
           placement={placement}
-          closable={false}
           onClose={onClose}
           open={open}
           key={placement}
         >
           <ul className="space-y-6 text-xl">
             <li>
-              <Link to={`/`}>All Users</Link>
+              <Link to={`manageUser`}>Manage Users</Link>
             </li>
             <li>
               <Link to={`addItem`}>Add Doctor</Link>
             </li>
             <li>
-              <Link to={`/`}>Mange Doctors</Link>
+              <Link to={`/`}>Manage Doctors</Link>
             </li>
             <li>
               <Link to={`/`}>Home</Link>
             </li>
           </ul>
         </Drawer>
+        <div className="lg:hidden">
+          <Outlet></Outlet>
+        </div>
       </div>
       <div className="hidden lg:block">
         <div className="grid grid-cols-6 gap-2">
           <div className=" min-h-screen border-0 border-r-2 px-5 pt-4">
             <ul className="space-y-6 text-xl">
               <li>
-                <Link to={`/`}>All Users</Link>
+                <Link to={`manageUser`}>Manage Users</Link>
               </li>
               <li>
                 <Link to={`addItem`}>Add Doctor</Link>
               </li>
               <li>
-                <Link to={`/`}>Mange Doctors</Link>
+                <Link to={`/`}>Manage Doctors</Link>
               </li>
               <li>
                 <Link to={`/`}>Home</Link>

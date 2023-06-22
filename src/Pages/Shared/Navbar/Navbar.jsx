@@ -8,6 +8,7 @@ import { useState } from "react";
 import { useCallback } from "react";
 import { useContext } from "react";
 import { AuthContext } from "../../../provider/AuthProvider";
+import logoIcon from "../../../../public/logow.png";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -55,7 +56,7 @@ const Navbar = () => {
                 <Link>About</Link>
               </li>
               <li>
-                <Link>Appointment</Link>
+                <Link to={`appointment`}>Appointment</Link>
               </li>
               {user && (
                 <li>
@@ -73,7 +74,9 @@ const Navbar = () => {
               )}
             </ul>
           </div>
-          <Link class="btn btn-ghost normal-case text-xl"></Link>
+          <Link class="btn btn-ghost normal-case text-xl">
+            <img src={logoIcon} className="w-32 md:w-48" alt="" />
+          </Link>
         </div>
         <div class="navbar-end hidden lg:flex ">
           <ul class="menu menu-horizontal px-1 ">
@@ -85,7 +88,7 @@ const Navbar = () => {
               <Link>About</Link>
             </li>
             <li>
-              <Link>Appointment</Link>
+              <Link to={`appointment`}>Appointment</Link>
             </li>
 
             <li onClick={toggleOpen}>

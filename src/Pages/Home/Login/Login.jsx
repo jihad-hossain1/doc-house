@@ -5,9 +5,10 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../../provider/AuthProvider";
 import { toast } from "react-hot-toast";
+import { saveUser } from "../../../auth/auth";
 
 const Login = () => {
-  const { signIn } = useContext(AuthContext);
+  const { signIn, signInWithGoogle } = useContext(AuthContext);
   // const captchaRef = useRef(null);
 
   const navigate = useNavigate();
@@ -39,6 +40,20 @@ const Login = () => {
       .catch((errors) => {
         console.log(errors.message);
         toast.error(`${errors.message}`);
+      });
+  };
+
+  const handleGoogleSignIn = () => {
+    console.log("clck");
+    signInWithGoogle()
+      .then((result) => {
+        console.log(result.user);
+        saveUser(result.user);
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        console.log(error.message);
+        toast.error(`${error}`);
       });
   };
 
@@ -79,6 +94,16 @@ const Login = () => {
           />
         </div>
       </form>
+      <div className="divider"></div>
+      <div>
+        <button
+          onClick={handleGoogleSignIn}
+          className="border cursor-pointer  w-full mx-auto rounded-md bg-[#F7A582] py-4 px-3 hover:shadow-md shadow text-white font-bold"
+        >
+          {" "}
+          Sign With <span className="uppercase">Google</span>
+        </button>
+      </div>
       <div className="text-center mt-5">
         Please register at first. Go to
         <Link to={`/signup`} className="ml-2  text-[#F7A582]  font-bold">

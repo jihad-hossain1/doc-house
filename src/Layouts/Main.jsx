@@ -8,21 +8,24 @@ import Banner from "../Components/Banner/Banner";
 const Main = () => {
   const location = useLocation();
   console.log(location);
-  const noHeader = location.pathname.includes(``);
+  const noBanner = location.pathname.includes("appointment");
+
   return (
     <>
       <div className="py-1  bg-[#07332F]">
         <Navbar></Navbar>
       </div>
 
-      <div className="bg-[#07332F] ">
-        <Banner></Banner>
-      </div>
-      <Container>
-        <div className="min-h-screen">
-          <Outlet></Outlet>
+      {/* {noBanner || (
+        <div className="bg-[#07332F] ">
+          <Banner></Banner>
         </div>
-      </Container>
+      )} */}
+
+      <div className="min-h-screen">
+        <Outlet></Outlet>
+      </div>
+
       <Footer></Footer>
     </>
   );

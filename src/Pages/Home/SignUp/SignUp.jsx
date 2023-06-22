@@ -132,6 +132,8 @@ const SignUp = () => {
         </div>
       </form>
       <div className="divider"></div>
+
+      {/* sign with google  */}
       <div>
         <button
           onClick={handleGoogleSignIn}
@@ -141,6 +143,8 @@ const SignUp = () => {
           Sign With <span className="uppercase">Google</span>
         </button>
       </div>
+
+      {/* already register section  */}
       <div className="text-center mt-5">
         Already registered? Go to
         <Link to={`/login`} className="font-bold text-[#F7A582] ml-2">
