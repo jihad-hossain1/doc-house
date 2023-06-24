@@ -37,7 +37,7 @@ const AddItem = () => {
             description,
             price: parseFloat(price),
           };
-          // console.log(newItem);
+          console.log(newItem);
           axios
             .post(`${import.meta.env.VITE_BASE_URL}/addADoctor`, newItem)
             .then((data) => {
@@ -60,7 +60,7 @@ const AddItem = () => {
   };
 
   return (
-    <div className="mt-10">
+    <div className="mt-10 py-10">
       <div className="max-w-[1200px] mx-auto xl:px-44 md:px-10 sm:px-2 px-4 mt-10">
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
           <div>
@@ -85,7 +85,7 @@ const AddItem = () => {
               className="border w-full px-3 py-4"
             />
           </div>
-          <div>
+          {/* <div>
             <label htmlFor="" className="font-semibold">
               Category
             </label>
@@ -95,6 +95,24 @@ const AddItem = () => {
               {...register("category")}
               className="border w-full px-3 py-4"
             />
+          </div> */}
+
+          <div className="w-full">
+            <select
+              {...register("category")}
+              name="category"
+              className="border px-2 py-4 rounded w-full"
+            >
+              <option disabled selected>
+                Select Service Category
+              </option>
+              <option value="TeethOrthodonatics">Teeth Orthodonatics</option>
+              <option value="CosmeticDentisty">Cosmetic Dentisty</option>
+              <option value="TeethCleaning">Teeth Cleaning</option>
+              <option value="CavityProtection">Cavity Protection</option>
+              <option value="PediatricDental">Pediatric Dental</option>
+              <option value="OralSurgery">Oral Surgery</option>
+            </select>
           </div>
           <div>
             <label htmlFor="" className="font-semibold">

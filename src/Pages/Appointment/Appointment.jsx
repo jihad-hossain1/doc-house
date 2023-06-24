@@ -31,13 +31,10 @@ const Appointment = () => {
           </div>
         </div>
         <div>
-          <h4 className="text-center text-2xl md:text-4xl font-semibold text-gray-700">
+          <h4 className="text-center text-2xl md:text-4xl font-semibold text-gray-700 py-10">
             Please select a service
           </h4>
           <Category></Category>
-          <div>
-            <Outlet></Outlet>
-          </div>
         </div>
       </Container>
     </div>
