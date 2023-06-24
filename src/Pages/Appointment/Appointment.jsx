@@ -5,6 +5,7 @@ import imageDent from "../../assets/banner/images/chair.png";
 import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css";
 import { DateRange } from "react-date-range";
+import { Outlet } from "react-router-dom";
 
 const Appointment = () => {
   return (
@@ -29,10 +30,15 @@ const Appointment = () => {
             />
           </div>
         </div>
-        <h4 className="text-center text-2xl md:text-4xl font-semibold text-gray-700">
-          Please select a service
-        </h4>
-        <Category></Category>
+        <div>
+          <h4 className="text-center text-2xl md:text-4xl font-semibold text-gray-700">
+            Please select a service
+          </h4>
+          <Category></Category>
+          <div>
+            <Outlet></Outlet>
+          </div>
+        </div>
       </Container>
     </div>
   );
