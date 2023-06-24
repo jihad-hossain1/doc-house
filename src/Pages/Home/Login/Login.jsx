@@ -49,6 +49,13 @@ const Login = () => {
       .then((result) => {
         console.log(result.user);
         saveUser(result.user);
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Login Complete",
+          showConfirmButton: false,
+          timer: 1500,
+        });
         navigate(from, { replace: true });
       })
       .catch((error) => {
