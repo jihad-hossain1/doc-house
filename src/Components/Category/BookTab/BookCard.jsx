@@ -37,6 +37,8 @@ const BookCard = ({
           </button>
         </div>
       </div>
+
+      {/* booking modal  */}
       <Modal
         title={booking?.name}
         open={isModalOpen}
@@ -64,6 +66,14 @@ const BookCard = ({
             type="text"
             name="schedule"
             defaultValue={booking?.schedule}
+            readOnly
+            id=""
+            className="hidden"
+          />
+          <input
+            type="text"
+            name="name"
+            defaultValue={booking?.name}
             readOnly
             id=""
             className="hidden"

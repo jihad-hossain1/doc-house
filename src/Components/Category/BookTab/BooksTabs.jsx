@@ -26,12 +26,14 @@ const BooksTabs = ({ items }) => {
       e.preventDefault();
       const form = e.target;
       const cname = form.cname.value;
+      const name = form.name.value;
       const number = form.number.value;
       const email = form.email.value;
       const date = form.date.value;
       const price = form.price.value;
       const schedule = form.schedule.value;
       const info = {
+        name,
         cname,
         number,
         email,
