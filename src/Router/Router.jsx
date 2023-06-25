@@ -14,6 +14,8 @@ import DashboardHome from "../Components/DashboardHome/DashboardHome";
 import ManageUser from "../Pages/Dashboard/ManageUser/ManageUser";
 import Appointment from "../Pages/Appointment/Appointment";
 import AddServices from "../Pages/Dashboard/AddServices/AddServices";
+import MyCart from "../Pages/Dashboard/MyAppointment/MyCart";
+import BookCard from "../Components/Category/BookTab/BookCard";
 // import UserModal from "../Components/userModal/UserModal";
 
 const router = createBrowserRouter([
@@ -77,6 +79,10 @@ const router = createBrowserRouter([
       {
         path: "addService",
         element: <AddServices></AddServices>,
+      },
+      {
+        path: "mycart",
+        element: <MyCart></MyCart>,
       },
     ],
   },

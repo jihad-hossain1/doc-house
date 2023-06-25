@@ -50,6 +50,9 @@ const DashboardLayout = () => {
             <li>
               <Link to={`/`}>Home</Link>
             </li>
+            <li>
+              <Link to={`mycart`}>My Appointment</Link>
+            </li>
           </ul>
         </Drawer>
         <div className="lg:hidden">
@@ -74,6 +77,9 @@ const DashboardLayout = () => {
               </li>
               <li>
                 <Link to={`/`}>Home</Link>
+              </li>
+              <li>
+                <Link to={`mycart`}>My Appointment</Link>
               </li>
             </ul>
           </div>
