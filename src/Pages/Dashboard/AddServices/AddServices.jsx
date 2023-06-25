@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 const img_hosting_token = import.meta.env.VITE_BB_KEY;
 
 const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`;
-const AddItem = () => {
+const AddServices = () => {
   const {
     register,
     handleSubmit,
@@ -28,24 +28,23 @@ const AddItem = () => {
           const imgUrl = dataResponse.data.display_url;
           console.log("photo uploaded url", imgUrl);
           // console.log(imgUrl);
-          const { name, email, category, description, price } = data;
+          const { name, category, price, schedule } = data;
           const newItem = {
             name,
-            email,
             image: imgUrl,
             category,
-            description,
+            schedule,
             price: parseFloat(price),
           };
           console.log(newItem);
           axios
-            .post(`${import.meta.env.VITE_BASE_URL}/addADoctor`, newItem)
+            .post(`${import.meta.env.VITE_BASE_URL}/service`, newItem)
             .then((data) => {
               if (data.data.insertedId) {
                 Swal.fire({
                   position: "top-end",
                   icon: "success",
-                  title: "Your work has been saved",
+                  title: "Your service has been saved",
                   showConfirmButton: false,
                   timer: 1500,
                 });
@@ -74,28 +73,6 @@ const AddItem = () => {
               className="border w-full px-3 py-4"
             />
           </div>
-          <div>
-            <label htmlFor="" className="font-semibold">
-              Email
-            </label>
-            <input
-              required
-              type="email"
-              {...register("email")}
-              className="border w-full px-3 py-4"
-            />
-          </div>
-          {/* <div>
-            <label htmlFor="" className="font-semibold">
-              Category
-            </label>
-            <input
-              required
-              type="text"
-              {...register("category")}
-              className="border w-full px-3 py-4"
-            />
-          </div> */}
 
           <div className="w-full">
             <select
@@ -114,6 +91,25 @@ const AddItem = () => {
               <option value="OralSurgery">Oral Surgery</option>
             </select>
           </div>
+
+          <div className="w-full">
+            <select
+              {...register("schedule")}
+              name="schedule"
+              className="border px-2 py-4 rounded w-full"
+            >
+              <option disabled selected>
+                Select Service Schedule
+              </option>
+              <option value="9.00 AM - 10.00 AM">9.00 AM - 10.00 AM</option>
+              <option value="10.00 AM - 11.00 AM">10.00 AM - 11.00 AM</option>
+              <option value="10.00 PM - 11.00 PM">10.00 PM - 11.00 PM</option>
+              <option value="1.00 PM - 3.00 PM">1.00 PM - 3.00 PM</option>
+              <option value="3.00 PM - 5.00 PM">3.00 PM - 5.00 PM</option>
+              <option value="6.00 PM - 8.00 PM">6.00 PM - 8.00 PM</option>
+            </select>
+          </div>
+
           <div>
             <label htmlFor="" className="font-semibold">
               Price
@@ -125,17 +121,7 @@ const AddItem = () => {
               className="border w-full px-3 py-4"
             />
           </div>
-          <div>
-            <label htmlFor="" className="font-semibold">
-              Description
-            </label>
-            <input
-              required
-              type="text"
-              {...register("description")}
-              className="border w-full px-3 py-4"
-            />
-          </div>
+
           <div>
             <input
               required
@@ -147,7 +133,7 @@ const AddItem = () => {
           <div>
             <input
               type="submit"
-              value="Add Doctor"
+              value="Add Service"
               className="text-white font-semibold border cursor-pointer  w-full px-3 py-4 mx-auto rounded-md bg-[#07332F]  hover:shadow-md shadow"
             />
           </div>
@@ -157,4 +143,4 @@ const AddItem = () => {
   );
 };
 
-export default AddItem;
+export default AddServices;

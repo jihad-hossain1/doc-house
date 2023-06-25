@@ -1,9 +1,4 @@
 import React from "react";
-import { icons } from "../Icon/Icons";
-import CategoryBox from "./CategoryBox";
-import { Outlet } from "react-router-dom";
-import useDoctors from "../../hook/useDoctors";
-
 import teethIcon from "../../assets/icons/teeth.png";
 import cosmeticIcon from "../../assets/icons/cosmetic.png";
 import teethCleaningIcon from "../../assets/icons/teethClean.png";
@@ -14,36 +9,32 @@ import oralIcon from "../../assets/icons/oralSurgery.png";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import BooksTabs from "./BookTab/BooksTabs";
+import useService from "../../hook/useService";
 
 const Category = () => {
-  const [doctors] = useDoctors();
-  const teethOrthodontics = doctors.filter(
+  const [services] = useService();
+  const teethOrthodontics = services.filter(
     (service) => service.category === "TeethOrthodonatics"
   );
-  const cosmeticDentisty = doctors.filter(
+  const cosmeticDentisty = services.filter(
     (service) => service.category === "CosmeticDentisty"
   );
-  const cavity = doctors.filter(
+  const cavity = services.filter(
     (service) => service.category === "CavityProtection"
   );
-  const teethCleaning = doctors.filter(
+  const teethCleaning = services.filter(
     (service) => service.category === "TeethCleaning"
   );
-  const oralSurgery = doctors.filter(
+  const oralSurgery = services.filter(
     (service) => service.category === "OralSurgery"
   );
-  const pediatricDental = doctors.filter(
+  const pediatricDental = services.filter(
     (service) => service.category === "PediatricDental"
   );
 
   return (
     <>
       <div>
-        {/* {icons.map((icon, index) => (
-          <CategoryBox key={index} icon={icon.icon} label={icon.label}>
-            {icon.label}
-          </CategoryBox>
-        ))} */}
         <Tabs className={`flex flex-col justify-center items-center`}>
           <TabList className={`grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-6`}>
             {/* Orthodonatics 1 */}
@@ -129,7 +120,7 @@ const Category = () => {
           <TabPanel
             className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5 space-x-2 space-y-2`}
           >
-            <BooksTabs items={teethCleaning}></BooksTabs>
+            <BooksTabs items={teethOrthodontics}></BooksTabs>
           </TabPanel>
           {/*panel 2*/}
           <TabPanel

@@ -13,6 +13,7 @@ import DashboardLayout from "../Layouts/DashboardLayout";
 import DashboardHome from "../Components/DashboardHome/DashboardHome";
 import ManageUser from "../Pages/Dashboard/ManageUser/ManageUser";
 import Appointment from "../Pages/Appointment/Appointment";
+import AddServices from "../Pages/Dashboard/AddServices/AddServices";
 // import UserModal from "../Components/userModal/UserModal";
 
 const router = createBrowserRouter([
@@ -72,6 +73,10 @@ const router = createBrowserRouter([
       {
         path: "manageUser",
         element: <ManageUser></ManageUser>,
+      },
+      {
+        path: "addService",
+        element: <AddServices></AddServices>,
       },
     ],
   },

@@ -42,6 +42,9 @@ const DashboardLayout = () => {
               <Link to={`addItem`}>Add Doctor</Link>
             </li>
             <li>
+              <Link to={`addService`}>Add Service</Link>
+            </li>
+            <li>
               <Link to={`/`}>Manage Doctors</Link>
             </li>
             <li>
@@ -62,6 +65,9 @@ const DashboardLayout = () => {
               </li>
               <li>
                 <Link to={`addItem`}>Add Doctor</Link>
+              </li>
+              <li>
+                <Link to={`addService`}>Add Service</Link>
               </li>
               <li>
                 <Link to={`/`}>Manage Doctors</Link>
