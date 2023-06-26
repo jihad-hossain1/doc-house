@@ -5,12 +5,15 @@ import { MdEdit } from "react-icons/md";
 import Swal from "sweetalert2";
 import { useState } from "react";
 import UpdateBooking from "./UpdateBooking";
+import BookingPayModal from "../Payment/BookingPayModal";
 // import { FaAmazonPay } from "react-icons/fa6";
 
 const MyCart = () => {
   const [cart, refetch] = useCart();
   const [updateItem, setUpdateItem] = useState();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isPayModalOpen, setIsPayModalOpen] = useState(false);
+  const [bookingPay, setBookingPay] = useState();
 
   const total = cart.reduce((sum, item) => item.price + sum, 0);
   const handleDelete = (item) => {
@@ -51,9 +54,18 @@ const MyCart = () => {
   const handleCancel = () => {
     setIsModalOpen(false);
   };
-  const handleBooking = (item) => {
+  const handlePayOk = () => {
+    setIsPayModalOpen(false);
+  };
+  const handlePayCancel = () => {
+    setIsPayModalOpen(false);
+  };
+  const showModalPay = () => {
+    setIsPayModalOpen(true);
+  };
+  const handleBookingPayment = (item) => {
     // console.log(item);
-    setBooking(item);
+    setBookingPay(item);
   };
   return (
     <div className="my-10">
@@ -71,6 +83,7 @@ const MyCart = () => {
               <th>Date</th>
               <th>Time</th>
               <th>Treatment</th>
+              <th>Price</th>
               <th>Action</th>
               <th>payment</th>
             </tr>
@@ -79,10 +92,16 @@ const MyCart = () => {
             {cart.map((item, index) => (
               <tr key={item._id} index={index} item={item} className="">
                 <th>{index + 1}</th>
-                <td>{item?.cname}</td>
+                <td>
+                  <ul className="text-sm">
+                    <li className="font-semibold">{item?.cname}</li>
+                    <li className="text-gray-600">{item?.number}</li>
+                  </ul>
+                </td>
                 <td>{item?.date}</td>
                 <td>{item?.schedule}</td>
                 <td>{item?.name}</td>
+                <td> ${item?.price}</td>
                 <td>
                   <button
                     onClick={() => handleUpdateBooking(item)}
@@ -101,8 +120,14 @@ const MyCart = () => {
                   </button>
                 </td>
                 <td className="">
-                  <button className="transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-125 duration-300">
-                    <FaAmazonPay className="text-[#07332F] text-3xl"></FaAmazonPay>
+                  <button
+                    onClick={() => handleBookingPayment(item)}
+                    className="transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-125 duration-300"
+                  >
+                    <FaAmazonPay
+                      onClick={showModalPay}
+                      className="text-[#07332F] text-3xl"
+                    ></FaAmazonPay>
                   </button>
                 </td>
               </tr>
@@ -129,6 +154,14 @@ const MyCart = () => {
         handleCancel={handleCancel}
         refetch={refetch}
       ></UpdateBooking>
+      {/* bookingPayment  */}
+      <BookingPayModal
+        bookingPay={bookingPay}
+        isPayModalOpen={isPayModalOpen}
+        handlePayOk={handlePayOk}
+        handlePayCancel={handlePayCancel}
+        refetch={refetch}
+      ></BookingPayModal>
     </div>
   );
 };

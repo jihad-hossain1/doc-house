@@ -13,6 +13,8 @@ const BookCard = ({
   handleOk,
   handleCancel,
   handleAppointment,
+  confirmLoading,
+  bookLoad,
 }) => {
   const { user } = useContext(AuthContext);
   return (
@@ -46,6 +48,7 @@ const BookCard = ({
         okButtonProps={{ style: { display: "none" } }}
         onOk={handleOk}
         onCancel={handleCancel}
+        confirmLoading={confirmLoading}
       >
         <form action="" onSubmit={handleAppointment}>
           <div className="grid grid-cols-2 text-center gap-2 my-2">

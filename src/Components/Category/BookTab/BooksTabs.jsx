@@ -12,6 +12,8 @@ const BooksTabs = ({ items }) => {
   const { user } = useContext(AuthContext);
   const [booking, setBooking] = useState();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [confirmLoading, setConfirmLoading] = useState(false);
+  const [bookLoad, setBookLoad] = useState();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -19,7 +21,11 @@ const BooksTabs = ({ items }) => {
     setIsModalOpen(true);
   };
   const handleOk = () => {
-    setIsModalOpen(false);
+    setConfirmLoading(true);
+    setTimeout(() => {
+      setIsModalOpen(false);
+      setConfirmLoading(false);
+    }, 3000);
   };
   const handleAppointment = (e) => {
     if (user && user?.email) {
@@ -46,6 +52,7 @@ const BooksTabs = ({ items }) => {
         .then((data) => {
           console.log(data);
           if (data.data.insertedId) {
+            setBookLoad(data.data.insertedId);
             Swal.fire({
               position: "top-end",
               icon: "success",
@@ -53,6 +60,7 @@ const BooksTabs = ({ items }) => {
               showConfirmButton: false,
               timer: 1500,
             });
+            form.reset();
           }
         })
         .catch((error) => {
@@ -99,6 +107,8 @@ const BooksTabs = ({ items }) => {
             handleOk={handleOk}
             handleAppointment={handleAppointment}
             handleCancel={handleCancel}
+            confirmLoading={confirmLoading}
+            bookLoad={bookLoad}
           ></BookCard>
         ))}
       </div>
