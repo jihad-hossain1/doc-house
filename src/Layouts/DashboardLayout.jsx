@@ -53,6 +53,9 @@ const DashboardLayout = () => {
             <li>
               <Link to={`mycart`}>My Appointment</Link>
             </li>
+            <li>
+              <Link to={`mybooking`}>My Booking</Link>
+            </li>
           </ul>
         </Drawer>
         <div className="lg:hidden">
@@ -80,6 +83,9 @@ const DashboardLayout = () => {
               </li>
               <li>
                 <Link to={`mycart`}>My Appointment</Link>
+              </li>
+              <li>
+                <Link to={`mybooking`}>My Booking</Link>
               </li>
             </ul>
           </div>

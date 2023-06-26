@@ -36,6 +36,7 @@ const UpdateBooking = ({
           });
           form.reset();
           refetch();
+          handleCancel(true);
         }
         console.log(data);
       });

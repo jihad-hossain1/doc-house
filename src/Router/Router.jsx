@@ -16,6 +16,7 @@ import Appointment from "../Pages/Appointment/Appointment";
 import AddServices from "../Pages/Dashboard/AddServices/AddServices";
 import MyCart from "../Pages/Dashboard/MyAppointment/MyCart";
 import BookCard from "../Components/Category/BookTab/BookCard";
+import MyBooking from "../Pages/Dashboard/MyAppointment/MyBooking";
 // import UserModal from "../Components/userModal/UserModal";
 
 const router = createBrowserRouter([
@@ -83,6 +84,10 @@ const router = createBrowserRouter([
       {
         path: "mycart",
         element: <MyCart></MyCart>,
+      },
+      {
+        path: "mybooking",
+        element: <MyBooking></MyBooking>,
       },
     ],
   },

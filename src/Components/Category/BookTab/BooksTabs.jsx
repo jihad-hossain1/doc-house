@@ -25,7 +25,7 @@ const BooksTabs = ({ items }) => {
     setTimeout(() => {
       setIsModalOpen(false);
       setConfirmLoading(false);
-    }, 3000);
+    }, 2000);
   };
   const handleAppointment = (e) => {
     if (user && user?.email) {
@@ -61,6 +61,7 @@ const BooksTabs = ({ items }) => {
               timer: 1500,
             });
             form.reset();
+            handleOk(true);
           }
         })
         .catch((error) => {

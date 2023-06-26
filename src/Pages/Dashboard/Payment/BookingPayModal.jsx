@@ -44,6 +44,7 @@ const BookingPayModal = ({
           <CheckoutForm
             bookingPay={bookingPay}
             handlePayCancel={handlePayCancel}
+            refetch={refetch}
           ></CheckoutForm>
         </Elements>
       </Modal>

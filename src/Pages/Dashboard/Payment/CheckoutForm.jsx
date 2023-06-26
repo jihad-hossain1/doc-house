@@ -8,7 +8,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 
-const CheckoutForm = ({ bookingPay, handlePayCancel }) => {
+const CheckoutForm = ({ bookingPay, handlePayCancel, refetch }) => {
   const { user } = useContext(AuthContext);
   const stripe = useStripe();
   const elements = useElements();
@@ -72,6 +72,7 @@ const CheckoutForm = ({ bookingPay, handlePayCancel }) => {
           .post(`${import.meta.env.VITE_BASE_URL}/bookingInfo`, paymentInfo)
           .then((res) => {
             console.log(res.data);
+
             if (res.data.insertedId) {
               Swal.fire({
                 position: "top-end",
@@ -80,8 +81,24 @@ const CheckoutForm = ({ bookingPay, handlePayCancel }) => {
                 showConfirmButton: false,
                 timer: 1500,
               });
+              fetch(
+                `${import.meta.env.VITE_BASE_URL}/carts/${bookingPay._id}`,
+                {
+                  method: "DELETE",
+                }
+              )
+                .then((res) => res.json())
+                .then((data) => {
+                  if (data.deletedCount > 0) {
+                    Swal.fire(
+                      "Deleted!",
+                      "Your file has been deleted.",
+                      "success"
+                    );
+                    refetch();
+                  }
+                });
               handlePayCancel(true);
-              navigate("/dashboardLayout/mycart");
             }
           });
       }
