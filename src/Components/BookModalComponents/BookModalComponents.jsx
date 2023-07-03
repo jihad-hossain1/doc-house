@@ -18,7 +18,7 @@ const BookModalComponents = ({
         okButtonProps={{ style: { display: "none" } }}
       >
         <div className="flex flex-col justify-center items-center space-y-2">
-          <h4 className="text-xl font-semibold">{items?.name}</h4>
+          <h4 className="text-xl font-semibold pb-2">{items?.name}</h4>
           <p>Schedule time: {items?.schedule}</p>
           <p>Pay Time: {items?.date}</p>
           <p>Price: ${items?.price}</p>

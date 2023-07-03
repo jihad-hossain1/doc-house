@@ -19,7 +19,7 @@ const MyBooking = () => {
     setIsModalOpen(false);
   };
   return (
-    <div className="px-4">
+    <div className="px-4 py-2">
       <h4 className="text-4xl text-center font-thin text-neutral-700 py-8">
         My Total Booking: {bookInfo?.length}
       </h4>

@@ -29,10 +29,13 @@ const DashboardLayout = () => {
         </Space>
         <Drawer
           title={user?.displayName}
-          placement={placement}
+          // placement={placement}
+          placement="left"
           onClose={onClose}
           open={open}
           key={placement}
+          width={270}
+          // className="w-2/4 "
         >
           <ul className="space-y-6 text-xl">
             <li>
