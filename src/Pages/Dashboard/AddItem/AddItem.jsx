@@ -1,16 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import Swal from "sweetalert2";
 const img_hosting_token = import.meta.env.VITE_BB_KEY;
+import Select from "react-select";
+import CreatableSelect from "react-select/creatable";
+
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { DatePicker } from "@mui/x-date-pickers";
+import { TextField } from "@mui/material";
+import { TimeField } from "@mui/x-date-pickers/TimeField";
 
 const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`;
 const AddItem = () => {
+  const [selectDoctorLebel, setSelectDoctorLebel] = useState(null);
+  const [selectDoctorCategory, setselectDoctorCategory] = useState(null);
+  const [selectLocation, setSelectLocation] = useState(null);
+  const [value, setValue] = useState(null);
+  const [timeValue, setTimeValue] = useState(null);
+  const [endTimeValue, setEndTimeValue] = useState(null);
+  const doctorLebel = [
+    { value: "seniorPhysiotherapist", label: "Senior Physiotherapist" },
+    { value: "juniorPhysiotherapist", label: "Junior Physiotherapist" },
+    { value: "professiorPhysiotherapist", label: "Professior Physiotherapist" },
+  ];
+  const doctorCategory = [
+    { value: "TeethOrthodonatics", label: "TeethOrthodonatics" },
+    { value: "CosmeticDentisty", label: "CosmeticDentisty" },
+    { value: "CavityProtection", label: "CavityProtection" },
+    { value: "PediatricDental", label: "PediatricDental" },
+    { value: "OralSurgery", label: "OralSurgery" },
+  ];
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
+    reset,
   } = useForm();
 
   const onSubmit = (data) => {
@@ -28,7 +55,7 @@ const AddItem = () => {
           const imgUrl = dataResponse.data.display_url;
           console.log("photo uploaded url", imgUrl);
           // console.log(imgUrl);
-          const { name, email, category, description, price } = data;
+          const { name, email, description, price, rating } = data;
           const newItem = {
             name,
             email,
@@ -36,6 +63,11 @@ const AddItem = () => {
             category,
             description,
             price: parseFloat(price),
+            rating: parseFloat(rating),
+            doctorLabel: selectDoctorLebel,
+            doctorCategory: selectDoctorCategory,
+            location: selectLocation,
+            dateTime: { value, timeValue, endTimeValue },
           };
           console.log(newItem);
           axios
@@ -97,33 +129,95 @@ const AddItem = () => {
             />
           </div> */}
 
-          <div className="w-full">
-            <select
-              {...register("category")}
-              name="category"
-              className="border px-2 py-4 rounded w-full"
-            >
-              <option disabled selected>
-                Select Service Category
-              </option>
-              <option value="TeethOrthodonatics">Teeth Orthodonatics</option>
-              <option value="CosmeticDentisty">Cosmetic Dentisty</option>
-              <option value="TeethCleaning">Teeth Cleaning</option>
-              <option value="CavityProtection">Cavity Protection</option>
-              <option value="PediatricDental">Pediatric Dental</option>
-              <option value="OralSurgery">Oral Surgery</option>
-            </select>
+          <div className="flex space-x-2">
+            <div className="w-full">
+              <label htmlFor="html">Set your Location</label>
+
+              <CreatableSelect
+                isMulti
+                defaultValue={selectLocation}
+                onChange={setSelectLocation}
+                // options={options}
+              />
+            </div>
+            <div className="w-full">
+              <label htmlFor="html">Select your Category</label>
+              <Select
+                defaultValue={selectDoctorCategory}
+                onChange={setselectDoctorCategory}
+                className="rounded"
+                options={doctorCategory}
+              />
+            </div>
+            <div className="w-full">
+              <label htmlFor="html">Select your Label</label>
+              <Select
+                defaultValue={selectDoctorLebel}
+                onChange={setSelectDoctorLebel}
+                className="rounded"
+                options={doctorLebel}
+              />
+            </div>
           </div>
-          <div>
-            <label htmlFor="" className="font-semibold">
-              Price
-            </label>
-            <input
-              required
-              type="text"
-              {...register("price")}
-              className="border w-full px-3 py-4"
-            />
+          <div className="md:flex md:space-x-3">
+            <div className="w-full">
+              <label htmlFor="" className="font-semibold">
+                Price
+              </label>
+              <input
+                required
+                type="text"
+                {...register("price")}
+                className="border w-full px-3 py-4"
+              />
+            </div>
+            <div className="w-full">
+              <label htmlFor="" className="font-semibold">
+                Rating
+              </label>
+              <input
+                required
+                type="text"
+                {...register("rating")}
+                className="border w-full px-3 py-4"
+              />
+            </div>
+          </div>
+          <div className="md:flex md:space-x-3">
+            {/* <DatePickers></DatePickers> */}
+            <div>
+              <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <DatePicker
+                  label="Select Date"
+                  value={value}
+                  onChange={(newValue) => setValue(newValue)}
+                  renderInput={(props) => (
+                    <TextField required {...props}></TextField>
+                  )}
+                ></DatePicker>
+              </LocalizationProvider>
+            </div>
+            <div>
+              <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <TimeField
+                  label="Select Start Time"
+                  value={timeValue}
+                  onChange={(newValue) => setTimeValue(newValue)}
+                  format="HH:mm"
+                />
+              </LocalizationProvider>
+            </div>
+            <div>
+              <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <TimeField
+                  label="Select End Time"
+                  value={endTimeValue}
+                  onChange={(newValue) => setEndTimeValue(newValue)}
+                  format="HH:mm"
+                />
+              </LocalizationProvider>
+            </div>
+            {/* <ResponsivePickers></ResponsivePickers> */}
           </div>
           <div>
             <label htmlFor="" className="font-semibold">
@@ -144,6 +238,7 @@ const AddItem = () => {
               {...register("image")}
             />
           </div>
+
           <div>
             <input
               type="submit"
@@ -152,6 +247,14 @@ const AddItem = () => {
             />
           </div>
         </form>
+        <div className="mt-4">
+          <button
+            onClick={() => reset()}
+            className="border px-1 hover:border-neutral-300 hover:shadow shadow-sm rounded"
+          >
+            Reset Form
+          </button>
+        </div>
       </div>
     </div>
   );
