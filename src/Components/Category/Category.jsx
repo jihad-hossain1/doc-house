@@ -34,7 +34,8 @@ const Category = () => {
 
   return (
     <>
-      <div>
+      {/* ******** DESKTOP DEVICES  **************/}
+      <div className="hidden md:block">
         <Tabs className={`flex flex-col justify-center items-center`}>
           <TabList className={`grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-6`}>
             {/* Orthodonatics 1 */}
@@ -114,6 +115,123 @@ const Category = () => {
               <span className="font-semibold">
                 Oral <br /> Surgery
               </span>
+            </Tab>
+          </TabList>
+          {/* teethOrthodontics panel 1*/}
+          <TabPanel
+            className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5 space-x-2 space-y-2`}
+          >
+            <BooksTabs items={teethOrthodontics}></BooksTabs>
+          </TabPanel>
+          {/*panel 2*/}
+          <TabPanel
+            className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5 space-x-2 space-y-2`}
+          >
+            <BooksTabs items={cosmeticDentisty}></BooksTabs>
+          </TabPanel>
+          {/*panel 3*/}
+          <TabPanel
+            className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5 space-x-2 space-y-2`}
+          >
+            <BooksTabs items={teethCleaning}></BooksTabs>
+          </TabPanel>
+          {/* cavity panel 4*/}
+          <TabPanel
+            className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5 space-x-2 space-y-2`}
+          >
+            <BooksTabs items={cavity}></BooksTabs>
+          </TabPanel>
+          {/*panel 5*/}
+          <TabPanel
+            className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5 space-x-2 space-y-2`}
+          >
+            <BooksTabs items={pediatricDental}></BooksTabs>
+          </TabPanel>
+          {/*panel 6*/}
+          <TabPanel
+            className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5 space-x-2 space-y-2`}
+          >
+            <BooksTabs items={oralSurgery}></BooksTabs>
+          </TabPanel>
+        </Tabs>
+      </div>
+      ;{/* ******** MOBILE DEVICES  **************/}
+      <div className="block md:hidden">
+        <Tabs className={``}>
+          <TabList className={`grid grid-cols-3 gap-2`}>
+            {/* Orthodonatics 1 */}
+            <Tab
+              className={`flex flex-col items-center justify-center shadow p-2 border border-neutral-200`}
+            >
+              <img
+                src={teethIcon}
+                className={`object-cover w-10 bg-rose-200 p-1 rounded-md  `}
+                alt=""
+              />
+              <p className="font-semibold text-sm break-all">
+                Teeth Orthodonatics
+              </p>
+            </Tab>
+            {/* Cosmetic Dentisty 2 */}
+            <Tab
+              className={`flex flex-col items-center justify-center shadow p-2 border border-neutral-200`}
+            >
+              <img
+                src={cosmeticIcon}
+                className={`object-cover w-10 bg-rose-200 p-1 rounded-md  `}
+                alt=""
+              />
+              <p className="font-semibold text-sm break-all">
+                Cosmetic Dentisty
+              </p>
+            </Tab>
+            {/*Teeth Cleaning 3 */}
+            <Tab
+              className={`flex flex-col items-center justify-center shadow p-2 border border-neutral-200`}
+            >
+              <img
+                src={teethCleaningIcon}
+                className={`object-cover w-10 bg-rose-200 p-1 rounded-md  `}
+                alt=""
+              />
+              <p className="font-semibold text-sm break-all">Teeth Cleaning</p>
+            </Tab>
+            {/*Cavity Protection 4 */}
+            <Tab
+              className={`flex flex-col items-center justify-center shadow p-2 border border-neutral-200`}
+            >
+              <img
+                src={cavityIcon}
+                className={`object-cover w-10 bg-rose-200 p-1 rounded-md  `}
+                alt=""
+              />
+              <p className="font-semibold text-sm break-all">
+                Cavity Protection
+              </p>
+            </Tab>
+            {/* Pediatric Dental 5 */}
+            <Tab
+              className={`flex flex-col items-center justify-center shadow p-2 border border-neutral-200`}
+            >
+              <img
+                src={pediatricIcon}
+                className={`object-cover w-10 bg-rose-200 p-1 rounded-md  `}
+                alt=""
+              />
+              <p className="font-semibold text-sm break-all">
+                Pediatric Dental
+              </p>
+            </Tab>
+            {/* Oral Surgery 6 */}
+            <Tab
+              className={`flex flex-col items-center justify-center shadow p-2 border border-neutral-200`}
+            >
+              <img
+                src={oralIcon}
+                className={`object-cover w-10 bg-rose-200 p-1 rounded-md  `}
+                alt=""
+              />
+              <p className="font-semibold text-sm break-all">Oral Surgery</p>
             </Tab>
           </TabList>
           {/* teethOrthodontics panel 1*/}

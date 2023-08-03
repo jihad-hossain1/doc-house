@@ -55,7 +55,7 @@ const AddItem = () => {
           const imgUrl = dataResponse.data.display_url;
           console.log("photo uploaded url", imgUrl);
           // console.log(imgUrl);
-          const { name, email, description, price, rating } = data;
+          const { name, email, description, price, rating, category } = data;
           const newItem = {
             name,
             email,
@@ -118,8 +118,25 @@ const AddItem = () => {
             />
           </div>
 
-          <div className="flex space-x-2">
+          <div className="md:flex md:space-x-2">
             <div className="w-full">
+              <select
+                {...register("category")}
+                name="category"
+                className="border px-2 py-4 rounded w-full"
+              >
+                <option disabled selected>
+                  Select Service Category
+                </option>
+                <option value="TeethOrthodonatics">Teeth Orthodonatics</option>
+                <option value="CosmeticDentisty">Cosmetic Dentisty</option>
+                <option value="TeethCleaning">Teeth Cleaning</option>
+                <option value="CavityProtection">Cavity Protection</option>
+                <option value="PediatricDental">Pediatric Dental</option>
+                <option value="OralSurgery">Oral Surgery</option>
+              </select>
+            </div>
+            <div className="w-full mb-4 md:mb-0">
               <label htmlFor="html">Set your Location</label>
 
               <CreatableSelect
@@ -129,7 +146,7 @@ const AddItem = () => {
                 // options={options}
               />
             </div>
-            <div className="w-full">
+            {/* <div className="w-full mb-4 md:mb-0">
               <label htmlFor="html">Select your Category</label>
               <Select
                 defaultValue={selectDoctorCategory}
@@ -137,8 +154,8 @@ const AddItem = () => {
                 className="rounded"
                 options={doctorCategory}
               />
-            </div>
-            <div className="w-full">
+            </div> */}
+            <div className="w-full mb-4 md:mb-0">
               <label htmlFor="html">Select your Label</label>
               <Select
                 defaultValue={selectDoctorLebel}
@@ -172,9 +189,9 @@ const AddItem = () => {
               />
             </div>
           </div>
-          <div className="md:flex md:space-x-3">
+          <div className="md:flex md:space-x-3 gap-2">
             {/* <DatePickers></DatePickers> */}
-            <div>
+            <div className="">
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DatePicker
                   label="Select Date"
