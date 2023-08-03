@@ -16,7 +16,27 @@ const ManageUser = () => {
 
         if (data.modifiedCount) {
           refetch();
-          toast.success("make admin success");
+          toast.success(`Admin success`);
+        }
+      })
+      .catch((error) => {
+        console.log(error?.message);
+        if (error) {
+          toast.error(error?.message);
+        }
+      });
+  };
+  const makeInstructor = (user) => {
+    fetch(`${import.meta.env.VITE_BASE_URL}/users/instructor/${user?._id}`, {
+      method: "PATCH",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+
+        if (data.modifiedCount) {
+          refetch();
+          toast.success(`intructor success`);
         }
       })
       .catch((error) => {
@@ -82,6 +102,25 @@ const ManageUser = () => {
                         className="border border-neutral-200 shadow-sm hover:shadow text-sm  rounded hover:border-green-600 flex items-center bg-green-950 text-white px-2 py-1"
                       >
                         <span className="mr-2"> make admin</span>{" "}
+                        <FaUserCheck className="text-xl "> </FaUserCheck>
+                      </button>
+                    </>
+                  )}
+                </td>
+                <td className="">
+                  {user?.role === "instructor" ? (
+                    <div className="flex items-center">
+                      {" "}
+                      <FaUserShield className="text-green-600 text-3xl"></FaUserShield>{" "}
+                      <span className="text-sm ml-2">Instructor</span>
+                    </div>
+                  ) : (
+                    <>
+                      <button
+                        onClick={() => makeInstructor(user)}
+                        className="border border-neutral-200 shadow-sm hover:shadow text-sm  rounded hover:border-green-600 flex items-center bg-green-950 text-white px-2 py-1"
+                      >
+                        <span className="mr-2"> Make Instructor</span>{" "}
                         <FaUserCheck className="text-xl "> </FaUserCheck>
                       </button>
                     </>

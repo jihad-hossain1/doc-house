@@ -117,17 +117,6 @@ const AddItem = () => {
               className="border w-full px-3 py-4"
             />
           </div>
-          {/* <div>
-            <label htmlFor="" className="font-semibold">
-              Category
-            </label>
-            <input
-              required
-              type="text"
-              {...register("category")}
-              className="border w-full px-3 py-4"
-            />
-          </div> */}
 
           <div className="flex space-x-2">
             <div className="w-full">
