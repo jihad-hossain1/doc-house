@@ -9,7 +9,7 @@ export const useInstructor = () => {
         queryKey: ['isInstructor', user?.email],
         queryFn: async () => {
             const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/users/instructor/${user?.email}`)
-            console.log('from instructor response', res)
+            // console.log('from instructor response', res)
             return res.data.instructor;
         }
     })

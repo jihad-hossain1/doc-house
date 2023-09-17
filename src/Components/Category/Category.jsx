@@ -47,9 +47,7 @@ const Category = () => {
                 className={`object-cover bg-rose-200 p-4 rounded-md w-2/4 md:w-20`}
                 alt=""
               />
-              <span className="font-semibold">
-                Teeth <br /> Orthodonatics
-              </span>
+              <span className="font-semibold">Teeth Orthodonatics</span>
             </Tab>
             {/*Cosmetic Dentisty 2 */}
             <Tab
@@ -60,9 +58,7 @@ const Category = () => {
                 className={`object-cover bg-rose-200 p-4 rounded-md w-2/4 md:w-20`}
                 alt=""
               />
-              <span className="font-semibold">
-                Cosmetic <br /> Dentisty
-              </span>
+              <span className="font-semibold">Cosmetic Dentisty</span>
             </Tab>
             {/*Teeth Cleaning 3 */}
             <Tab
@@ -73,9 +69,7 @@ const Category = () => {
                 className={`object-cover bg-rose-200 p-4 rounded-md w-2/4 md:w-20`}
                 alt=""
               />
-              <span className="font-semibold">
-                Teeth <br /> Cleaning
-              </span>
+              <span className="font-semibold">Teeth Cleaning</span>
             </Tab>
             {/*Cavity Protection 4 */}
             <Tab
@@ -86,9 +80,7 @@ const Category = () => {
                 className={`object-cover bg-rose-200 p-4 rounded-md w-2/4 md:w-20`}
                 alt=""
               />
-              <span className="font-semibold">
-                Cavity <br /> Protection
-              </span>
+              <span className="font-semibold">Cavity Protection</span>
             </Tab>
             {/* Pediatric Dental 5 */}
             <Tab
@@ -99,9 +91,7 @@ const Category = () => {
                 className={`object-cover bg-rose-200 p-4 rounded-md w-2/4 md:w-20`}
                 alt=""
               />
-              <span className="font-semibold">
-                Pediatric <br /> Dental
-              </span>
+              <span className="font-semibold">Pediatric Dental</span>
             </Tab>
             {/* Oral Surgery 6 */}
             <Tab
@@ -112,9 +102,7 @@ const Category = () => {
                 className={`object-cover bg-rose-200 p-4 rounded-md w-2/4 md:w-20`}
                 alt=""
               />
-              <span className="font-semibold">
-                Oral <br /> Surgery
-              </span>
+              <span className="font-semibold">Oral Surgery</span>
             </Tab>
           </TabList>
           {/* teethOrthodontics panel 1*/}
@@ -155,13 +143,13 @@ const Category = () => {
           </TabPanel>
         </Tabs>
       </div>
-      ;{/* ******** MOBILE DEVICES  **************/}
+      {/* ******** MOBILE DEVICES  **************/}
       <div className="block md:hidden">
         <Tabs className={``}>
           <TabList className={`grid grid-cols-3 gap-2`}>
             {/* Orthodonatics 1 */}
             <Tab
-              className={`flex flex-col items-center justify-center shadow p-2 border border-neutral-200`}
+              className={`flex flex-col items-center justify-center shadow p-2 border border-neutral-200 cursor-pointer`}
             >
               <img
                 src={teethIcon}
@@ -174,7 +162,7 @@ const Category = () => {
             </Tab>
             {/* Cosmetic Dentisty 2 */}
             <Tab
-              className={`flex flex-col items-center justify-center shadow p-2 border border-neutral-200`}
+              className={`flex flex-col items-center justify-center shadow p-2 border border-neutral-200 cursor-pointer`}
             >
               <img
                 src={cosmeticIcon}
@@ -187,7 +175,7 @@ const Category = () => {
             </Tab>
             {/*Teeth Cleaning 3 */}
             <Tab
-              className={`flex flex-col items-center justify-center shadow p-2 border border-neutral-200`}
+              className={`flex flex-col items-center justify-center shadow p-2 border border-neutral-200 cursor-pointer`}
             >
               <img
                 src={teethCleaningIcon}
@@ -198,7 +186,7 @@ const Category = () => {
             </Tab>
             {/*Cavity Protection 4 */}
             <Tab
-              className={`flex flex-col items-center justify-center shadow p-2 border border-neutral-200`}
+              className={`flex flex-col items-center justify-center shadow p-2 border border-neutral-200 cursor-pointer`}
             >
               <img
                 src={cavityIcon}
@@ -211,7 +199,7 @@ const Category = () => {
             </Tab>
             {/* Pediatric Dental 5 */}
             <Tab
-              className={`flex flex-col items-center justify-center shadow p-2 border border-neutral-200`}
+              className={`flex flex-col items-center justify-center shadow p-2 border border-neutral-200 cursor-pointer`}
             >
               <img
                 src={pediatricIcon}
@@ -224,7 +212,7 @@ const Category = () => {
             </Tab>
             {/* Oral Surgery 6 */}
             <Tab
-              className={`flex flex-col items-center justify-center shadow p-2 border border-neutral-200`}
+              className={`flex flex-col items-center justify-center shadow p-2 border border-neutral-200 cursor-pointer`}
             >
               <img
                 src={oralIcon}

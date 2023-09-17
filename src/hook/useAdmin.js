@@ -9,7 +9,7 @@ export const useAdmin = () => {
         queryKey: ['isAdmin', user?.email],
         queryFn: async () => {
             const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/users/admin/${user?.email}`)
-            console.log('from admin response', res)
+            // console.log('from admin response', res)
             return res.data.admin;
         }
     })

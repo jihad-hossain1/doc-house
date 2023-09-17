@@ -8,6 +8,7 @@ import Review from "../../../Components/ReviewSlider/Review";
 import ExpertDocators from "../../../Components/ExpertDoctors/ExpertDocators";
 import ContactUs from "../../../Components/ContactUs/ContactUs";
 import Container from "../../../Components/Share/Container/Container";
+import SevicesHome from "../../../Components/ServicesCom/SevicesHome";
 
 // react tabs
 
@@ -16,22 +17,8 @@ const Home = () => {
     <>
       <Banner></Banner>
       <Container>
-        <div className="mt-24 grid grid-cols-1 md:grid-cols-3 md:space-x-10">
-          <div className="border p-1 rounded-lg hover:shadow-md shadow">
-            <img className="w-full" src={docImages} alt="" />
-          </div>
-          <div className="space-y-5">
-            <h2 className="text-4xl font-bold">Our Services</h2>
-            <p>
-              Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-              accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-              quae ab illo inve ntore veritatis et quasi architecto beatae vitae
-              dicta sunt explicabo.
-            </p>
+        <SevicesHome docImages={docImages}></SevicesHome>
 
-            <MyTabs></MyTabs>
-          </div>
-        </div>
         {/* opening section  */}
         <div className="mt-20">
           <Opening></Opening>
@@ -75,3 +62,21 @@ const Home = () => {
 };
 
 export default Home;
+
+{
+  /* <div className="mt-24 grid grid-cols-1 md:grid-cols-2 md:space-x-10">
+  <div className="border p-1 rounded-lg hover:shadow-md shadow w-full h-full">
+    <img className=" object-cover" src={docImages} alt="" />
+  </div>
+  <div className="space-y-5 w-full">
+    <h2 className="text-4xl font-bold">Our Services</h2>
+    <p>
+      Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+      doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inve
+      ntore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+    </p>
+
+    <MyTabs></MyTabs>
+  </div>
+</div>; */
+}

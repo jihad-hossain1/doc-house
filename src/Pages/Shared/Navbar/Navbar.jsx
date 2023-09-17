@@ -9,9 +9,12 @@ import { useCallback } from "react";
 import { useContext } from "react";
 import { AuthContext } from "../../../provider/AuthProvider";
 import logoIcon from "../../../../public/logow.png";
+import ThemeContext from "../../../provider/ThemeContext";
+import useTheme from "../../../hook/useTheme";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const { theme, toggleTheme } = useTheme();
 
   const [isOpen, setIsOpen] = useState(false);
   const toggleOpen = useCallback(() => {
@@ -46,15 +49,16 @@ const Navbar = () => {
             </label>
             <ul
               tabindex="0"
-              class="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-gray-800"
+              class="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-gray-800 dar:text-gray-950"
             >
-              <li>
+              <li className="">
                 <Link>Home</Link>
               </li>
 
               <li>
                 <Link>About</Link>
               </li>
+
               <li>
                 <Link to={`appointment`}>Appointment</Link>
               </li>
@@ -72,6 +76,16 @@ const Navbar = () => {
                   <Link to={`/login`}>Login</Link>
                 </li>
               )}
+              <div className="">
+                <label className="cursor-pointer inline-block label">
+                  <input
+                    onChange={toggleTheme}
+                    type="checkbox"
+                    checked={theme === "dark"}
+                    className="toggle toggle-error"
+                  />
+                </label>
+              </div>
             </ul>
           </div>
           <Link class="btn btn-ghost normal-case text-xl">
@@ -81,15 +95,27 @@ const Navbar = () => {
         <div class="navbar-end hidden lg:flex ">
           <ul class="menu menu-horizontal px-1 ">
             <li>
-              <Link>Home</Link>
+              <Link className="hover:text-orange-500 ">Home</Link>
             </li>
 
             <li>
-              <Link>About</Link>
+              <Link className="hover:text-orange-500 ">About</Link>
             </li>
             <li>
-              <Link to={`appointment`}>Appointment</Link>
+              <Link className="hover:text-orange-500 " to={`appointment`}>
+                Appointment
+              </Link>
             </li>
+            <div className="form-control">
+              <label className="cursor-pointer label">
+                <input
+                  onChange={toggleTheme}
+                  type="checkbox"
+                  checked={theme === "dark"}
+                  className="toggle toggle-error"
+                />
+              </label>
+            </div>
 
             <li onClick={toggleOpen}>
               <span>

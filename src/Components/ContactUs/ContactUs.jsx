@@ -9,8 +9,10 @@ const ContactUs = () => {
     watch,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
-  console.log(watch("example"));
+  const onSubmit = (data) => {
+    // console.log(data);
+  };
+  // console.log(watch("example"));
   return (
     <div className="bg-[#07332F] min-h-16 rounded-md mt-5 grid grid-cols-1 md:grid-cols-2 p-10 gap-3 md:gap-7">
       <div className="text-white space-y-4 ">

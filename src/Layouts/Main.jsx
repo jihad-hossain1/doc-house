@@ -7,7 +7,7 @@ import Banner from "../Components/Banner/Banner";
 
 const Main = () => {
   const location = useLocation();
-  console.log(location);
+  // console.log(location);
   const noBanner = location.pathname.includes("appointment");
 
   return (

@@ -17,9 +17,16 @@ const AddItem = () => {
   const [selectDoctorLebel, setSelectDoctorLebel] = useState(null);
   const [selectDoctorCategory, setselectDoctorCategory] = useState(null);
   const [selectLocation, setSelectLocation] = useState(null);
+  const [selectPassYear, setSelectPassYear] = useState(null);
+  const [selectCollage, setSelectCollage] = useState(null);
+  const [selectCourse, setSelectCourse] = useState(null);
+  const [selectPassYear2, setSelectPassYear2] = useState(null);
+  const [selectCollage2, setSelectCollage2] = useState(null);
+  const [selectCourse2, setSelectCourse2] = useState(null);
   const [value, setValue] = useState(null);
   const [timeValue, setTimeValue] = useState(null);
   const [endTimeValue, setEndTimeValue] = useState(null);
+  const [selectAwardName, setSelectAwardName] = useState(null);
   const doctorLebel = [
     { value: "seniorPhysiotherapist", label: "Senior Physiotherapist" },
     { value: "juniorPhysiotherapist", label: "Junior Physiotherapist" },
@@ -55,7 +62,16 @@ const AddItem = () => {
           const imgUrl = dataResponse.data.display_url;
           console.log("photo uploaded url", imgUrl);
           // console.log(imgUrl);
-          const { name, email, description, price, rating, category } = data;
+          const {
+            name,
+            email,
+            description,
+            price,
+            rating,
+            category,
+            aboutAward,
+            awardDate,
+          } = data;
           const newItem = {
             name,
             email,
@@ -68,6 +84,19 @@ const AddItem = () => {
             doctorCategory: selectDoctorCategory,
             location: selectLocation,
             dateTime: { value, timeValue, endTimeValue },
+            education: {
+              selectCollage,
+              selectCourse,
+              selectCourse,
+              selectCollage2,
+              selectCourse2,
+              selectCourse2,
+            },
+            award: {
+              selectAwardName,
+              aboutAward,
+              awardDate,
+            },
           };
           console.log(newItem);
           axios
@@ -93,29 +122,34 @@ const AddItem = () => {
 
   return (
     <div className="mt-10 py-10">
+      <h4 className="text-3xl text-center text-slate-600 font-bold">
+        Add Your Doctor
+      </h4>
       <div className="max-w-[1200px] mx-auto xl:px-44 md:px-10 sm:px-2 px-4 mt-10">
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-          <div>
-            <label htmlFor="" className="font-semibold">
-              Name
-            </label>
-            <input
-              required
-              type="text"
-              {...register("name")}
-              className="border w-full px-3 py-4"
-            />
-          </div>
-          <div>
-            <label htmlFor="" className="font-semibold">
-              Email
-            </label>
-            <input
-              required
-              type="email"
-              {...register("email")}
-              className="border w-full px-3 py-4"
-            />
+          <div className="grid md:flex md:space-x-3 items-center ">
+            <div className="w-full">
+              <label htmlFor="" className="font-semibold">
+                Doctor Name
+              </label>
+              <input
+                required
+                type="text"
+                {...register("name")}
+                className="border w-full px-3 py-4"
+              />
+            </div>
+            <div className="w-full">
+              <label htmlFor="" className="font-semibold">
+                Doctor Email
+              </label>
+              <input
+                required
+                type="email"
+                {...register("email")}
+                className="border w-full px-3 py-4"
+              />
+            </div>
           </div>
 
           <div className="md:flex md:space-x-2">
@@ -225,17 +259,142 @@ const AddItem = () => {
             </div>
             {/* <ResponsivePickers></ResponsivePickers> */}
           </div>
+          {/* Education 1 */}
           <div>
-            <label htmlFor="" className="font-semibold">
-              Description
+            <h4 className="text-center font-semibold text-xl underline py-3">
+              Educational Information
+            </h4>
+            <div className="grid md:flex items-center md:space-x-3 gap-3 md:gap-0">
+              <div className="w-full">
+                <label htmlFor="html">Course Name</label>
+                <CreatableSelect
+                  required
+                  isMulti
+                  defaultValue={selectCourse}
+                  onChange={setSelectCourse}
+                  // options={options}
+                />
+              </div>
+              <div className="w-full">
+                <label htmlFor="html">Collage Name</label>
+                <CreatableSelect
+                  required
+                  isMulti
+                  defaultValue={selectCollage}
+                  onChange={setSelectCollage}
+                  // options={options}
+                />
+              </div>
+              <div className="w-full">
+                <label htmlFor="html">Year</label>
+                <CreatableSelect
+                  required
+                  isMulti
+                  defaultValue={selectPassYear}
+                  onChange={setSelectPassYear}
+                  // options={options}
+                />
+              </div>
+            </div>
+          </div>
+          {/* Education 2  */}
+          <div>
+            <h4 className="text-center font-semibold text-xl underline py-3">
+              Educational Information (Optionals)
+            </h4>
+            <div className="grid md:flex items-center md:space-x-3 gap-3 md:gap-0">
+              <div className="w-full">
+                <label htmlFor="html">Course Name</label>
+                <CreatableSelect
+                  isMulti
+                  defaultValue={selectCourse2}
+                  onChange={setSelectCourse2}
+                  // options={options}
+                />
+              </div>
+              <div className="w-full">
+                <label htmlFor="html">Collage Name</label>
+                <CreatableSelect
+                  isMulti
+                  defaultValue={selectCollage2}
+                  onChange={setSelectCollage2}
+                  // options={options}
+                />
+              </div>
+              <div className="w-full">
+                <label htmlFor="html">Year</label>
+                <CreatableSelect
+                  isMulti
+                  defaultValue={selectPassYear2}
+                  onChange={setSelectPassYear2}
+                  // options={options}
+                />
+              </div>
+            </div>
+          </div>
+          {/* Award optional */}
+          <div>
+            {/* TODO : add award */}
+            <h4 className="text-center font-semibold text-xl underline py-3">
+              {" "}
+              Award ( Optionals ){" "}
+            </h4>
+            <div className="grid md:flex items-center md:space-x-3 gap-3 md:gap-0">
+              <div className="w-full">
+                <label htmlFor="html">Award Name</label>
+                <CreatableSelect
+                  isMulti
+                  defaultValue={selectAwardName}
+                  onChange={setSelectAwardName}
+                  // options={options}
+                />
+              </div>
+              <div className="w-full">
+                <label htmlFor="html">Award Year</label>
+                <input
+                  className="w-full border py-2 rounded px-2"
+                  type="date"
+                  name=""
+                  {...register("awardDate")}
+                  id=""
+                />
+              </div>
+            </div>
+            <div className="w-full mt-2">
+              <label htmlFor="html">
+                Award Details <span className="text-red-600">*</span>
+                <span className="text-sm text-gray-600">
+                  max-word 1000
+                </span>{" "}
+              </label>
+              <textarea
+                type="text"
+                maxLength={1000}
+                className="border w-full rounded p-2 focus:outline-border outline-neutral-200 "
+                placeholder="write about award details"
+                {...register("aboutAward", { maxLength: 1000 })}
+              />
+            </div>
+          </div>
+          {/* Discription / About me */}
+          <div className="w-full mt-2">
+            <label htmlFor="html">
+              About Doctor Details <span className="text-red-600">*</span>
+              <span className="text-sm text-gray-600">max-word 1000</span>{" "}
             </label>
-            <input
-              required
+            <textarea
               type="text"
-              {...register("description")}
-              className="border w-full px-3 py-4"
+              maxLength={1000}
+              className="border w-full rounded p-2 focus:outline-border outline-neutral-200 "
+              placeholder="write about award details"
+              {...register("description", { maxLength: 1000 })}
             />
           </div>
+          {/* Experienc  */}
+          <div className="flex">
+            <input type="text" name="" {...register("expName")} id="" />
+          </div>
+          {/* Photo Upload  */}
           <div>
             <input
               required
