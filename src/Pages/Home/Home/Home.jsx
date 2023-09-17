@@ -17,7 +17,7 @@ const Home = () => {
     <>
       <Banner></Banner>
       <Container>
-        <SevicesHome docImages={docImages}></SevicesHome>
+        {/* <SevicesHome docImages={docImages}></SevicesHome> */}
 
         {/* opening section  */}
         <div className="mt-20">

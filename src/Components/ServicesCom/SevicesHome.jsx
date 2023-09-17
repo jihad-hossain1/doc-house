@@ -3,7 +3,7 @@ import MyTabs from "../Tabs/Tabs";
 
 const SevicesHome = ({ docImages }) => {
   return (
-    <>
+    <div className="flex  mt-10">
       <div className="container px-6 py-10 mx-auto ">
         <h1 className="text-2xl font-semibold  lg:text-5xl dark:text-gray-500">
           Our Services
@@ -21,7 +21,14 @@ const SevicesHome = ({ docImages }) => {
           </div>
         </div>
       </div>
-    </>
+      <div className="">
+        <img
+          className="rounded-md object-cover"
+          src="https://i.ibb.co/rpYsBBF/dd-1.jpg"
+          alt=""
+        />
+      </div>
+    </div>
   );
 };
 
