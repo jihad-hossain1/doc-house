@@ -4,12 +4,11 @@ import { Link, NavLink } from "react-router-dom";
 // import Banner from "../../../Components/Banner/Banner";
 import Container from "../../../Components/Share/Container/Container";
 import { AiOutlineUser } from "react-icons/ai";
-import { useState } from "react";
-import { useCallback } from "react";
-import { useContext } from "react";
+import { useState, useContext, useCallback } from "react";
+
 import { AuthContext } from "../../../provider/AuthProvider";
 import logoIcon from "../../../../public/logow.png";
-import ThemeContext from "../../../provider/ThemeContext";
+// import ThemeContext from "../../../provider/ThemeContext";
 import useTheme from "../../../hook/useTheme";
 
 const Navbar = () => {
@@ -49,7 +48,7 @@ const Navbar = () => {
             </label>
             <ul
               tabindex="0"
-              class="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-gray-800 dar:text-gray-950"
+              className="bg-neutral-800 text-white  dark:text-white menu menu-sm dropdown-content mt-3 p-2  rounded-box w-52 "
             >
               <li className="">
                 <Link>Home</Link>
